@@ -4,6 +4,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -15,7 +16,7 @@ public class Main {
         ArrayList<String> filesToZip = new ArrayList<>();
         File dir = new File(savePath);
         if (dir.isDirectory()) {
-            for (File item : dir.listFiles()) {
+            for (File item : Objects.requireNonNull(dir.listFiles())) {
                 if (item.isFile()) {
                     if (item.getName().contains(".smg")) {
                         filesToZip.add(item.getName());
@@ -85,9 +86,8 @@ public class Main {
         GameProgress gamer2 = new GameProgress(100, 5, 80, 54.3);
         GameProgress gamer3 = new GameProgress(100, 5, 80, 54.3);
 
-
-        System.out.println(saveGame(gamer3, "gamer1") ? "gamer1 сохранён" : "не удалось сохранить gamer1");
-        System.out.println(saveGame(gamer3, "gamer2") ? "gamer2 сохранён" : "не удалось сохранить gamer2");
+        System.out.println(saveGame(gamer1, "gamer1") ? "gamer1 сохранён" : "не удалось сохранить gamer1");
+        System.out.println(saveGame(gamer2, "gamer2") ? "gamer2 сохранён" : "не удалось сохранить gamer2");
         System.out.println(saveGame(gamer3, "gamer3") ? "gamer3 сохранён" : "не удалось сохранить gamer3");
 
         ArrayList<String> filesToZip = scanSMG();
