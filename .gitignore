@@ -1,3 +1,2 @@
-savegames/
-# Project exclude paths
-/out/
+
+*.zip
